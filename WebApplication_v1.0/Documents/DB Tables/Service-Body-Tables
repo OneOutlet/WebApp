@@ -1,0 +1,59 @@
+                                                Service_All
+                Service_Name           |           Customer_Name     |       Time
+            
+Query =  Create table Service_All(Service_Name varchar(50) not null,Customer_Name varchar(100) not null,Time varchar(100) not null);      
+
+===========================================================================================================================================
+
+                                             Service_Electrician
+          Customer_Name     |    Mobile      |        Email         |          Address           |    Time
+            
+Query =  Create table Service_Electrician(Customer_Name varchar(100) not null,mobile varchar(11) not null,email varchar(100) not null,Address varchar(10000) not null,Time varchar(100) not null);      
+
+===========================================================================================================================================
+
+                                         Service_Plumber
+          Customer_Name     |    Mobile      |        Email         |          Address           |    Time
+            
+	Query =  Create table Service_Plumber(Customer_Name varchar(100) not null,mobile varchar(11) not null,email varchar(100) not null,Address varchar(10000) not null,Time DATETIME not null);      
+
+
+
+===========================================================================================================================================================================================================
+
+                                         Service_Carpenter
+          Customer_Name     |    Mobile      |        Email         |          Address           |    Time
+            
+Query =  Create table Service_Carpanter(Customer_Name varchar(100) not null,mobile varchar(11) not null,email varchar(100) not null,Address varchar(10000) not null,Time DATETIME not null);      
+
+
+
+===========================================================================================================================================================================================================
+
+                                         Service_Painter
+          Customer_Name     |    Mobile      |        Email         |          Address           |    Time
+            
+Query =  Create table Service_Painter(Customer_Name varchar(100) not null,mobile varchar(11) not null,email varchar(100) not null,Address varchar(10000) not null,Time DATETIME not null);      
+
+
+
+===========================================================================================================================================================================================================
+
+                                         Service_Ironwork
+          Customer_Name     |    Mobile      |        Email         |          Address           |    Time
+            
+Query =  Create table Service_Ironwork(Customer_Name varchar(100) not null,mobile varchar(11) not null,email varchar(100) not null,Address varchar(10000) not null,Time DATETIME not null);      
+
+
+
+===========================================================================================================================================================================================================
+
+
+                                      Service_Event
+          Customer_Name     |    Mobile      |        Email         |           Event            |        Address           |    Time
+            
+Query =  Create table Service_Event(Customer_Name varchar(100) not null,mobile varchar(11) not null,email varchar(100) not null,event varchar(100) not null,Address varchar(10000) not null,Time DATETIME not null);      
+
+
+
+===========================================================================================================================================================================================================
