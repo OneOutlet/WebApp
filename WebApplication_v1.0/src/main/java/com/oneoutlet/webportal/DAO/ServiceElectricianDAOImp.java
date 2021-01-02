@@ -14,27 +14,34 @@ public abstract class ServiceElectricianDAOImp implements ServiceElectricianDAO 
 
 	@Autowired
 	private SimpleJdbcInsert simplejdbcInser;
-	
+
+	@Autowired
+	private AllServiceTable allSeviceTable;
+
 	@Lookup
 	public abstract SimpleJdbcInsert getInsert();
 
 	@Override
 	public int insertElectricianData(ServiceElectricianBO serviceElectricianBO) {
-	
-		int count = 0;
 
-		simplejdbcInser=getInsert();
-		
+		int count = 0, countService = 0, countTable = 0;
+
+		simplejdbcInser = getInsert();
+
 		simplejdbcInser.withTableName("service_electrician");
-		
+
 		BeanPropertySqlParameterSource beanPropertySqlParameterSource = new BeanPropertySqlParameterSource(
 				serviceElectricianBO);
 
-		count = simplejdbcInser.execute(beanPropertySqlParameterSource);
-		
+		countService = simplejdbcInser.execute(beanPropertySqlParameterSource);
+
+		countTable = allSeviceTable.insertTableDetailData("service_electrician",
+				serviceElectricianBO.getCustomer_Name(), serviceElectricianBO.getTime());
+
+		if (countService == 1 && countTable == 1)
+			count = 1;
+
 		return count;
 	}
-	
-	
 
 }

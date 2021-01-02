@@ -1,6 +1,6 @@
 package com.oneoutlet.webportal.BO;
 
-import java.util.Date;
+
 
 import lombok.Data;
 
@@ -11,6 +11,6 @@ public class ServicePlumberBO {
 	private String mobile;
 	private String email; 
 	private String Address;
-	private Date Time;
+	private String Time;
 
 }

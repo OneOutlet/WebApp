@@ -36,9 +36,24 @@
 
 	</div>
 
-	<!-- Pop ups -->
+	<!-- Popups -->
 
 	<jsp:include page="Popup/Service-Body-Popup/Electrician.jsp"></jsp:include>
+
+
+	<jsp:include page="Popup/Service-Body-Popup/Carpenter.jsp"></jsp:include>
+
+
+	<jsp:include page="Popup/Service-Body-Popup/EvenPlaning.jsp"></jsp:include>
+
+
+	<jsp:include page="Popup/Service-Body-Popup/Ironwork.jsp"></jsp:include>
+
+
+	<jsp:include page="Popup/Service-Body-Popup/Painter.jsp"></jsp:include>
+
+
+	<jsp:include page="Popup/Service-Body-Popup/Plumber.jsp"></jsp:include>
 
 	<!-- JQuery -->
 	<script type="text/javascript"
