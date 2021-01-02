@@ -13,7 +13,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form:form action="test"
+			<form:form action="regitercarpenterservice"
 				modelAttribute="serviceCarpenter" class="needs-validation">
 				<div class="modal-body mx-3">
 					<div class="md-form mb-5">
