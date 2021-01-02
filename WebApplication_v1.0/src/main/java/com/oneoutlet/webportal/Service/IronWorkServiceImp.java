@@ -9,7 +9,7 @@ import com.oneoutlet.webportal.BO.ServiceIronWorkBO;
 import com.oneoutlet.webportal.DAO.ServiceIronWorkDAO;
 import com.oneoutlet.webportal.DTO.ServiceIronWorkDTO;
 
-@Service("eService")
+@Service
 public class IronWorkServiceImp implements IronWorkService {
 
 	@Autowired

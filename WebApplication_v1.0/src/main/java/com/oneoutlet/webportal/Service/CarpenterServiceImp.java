@@ -8,7 +8,7 @@ import com.oneoutlet.webportal.BO.ServiceCarpenterBO;
 import com.oneoutlet.webportal.DAO.ServiceCarpenterDAO;
 import com.oneoutlet.webportal.DTO.ServiceCarpenterDTO;
 
-@Service("eService")
+@Service
 public class CarpenterServiceImp implements CarpenterService {
 
 	@Autowired

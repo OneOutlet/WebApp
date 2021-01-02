@@ -9,7 +9,7 @@ import com.oneoutlet.webportal.BO.ServiceEventBO;
 import com.oneoutlet.webportal.DAO.ServiceEventDAO;
 import com.oneoutlet.webportal.DTO.ServiceEventDTO;
 
-@Service("eService")
+@Service
 public class EventServiceImp implements EventService {
 
 	@Autowired

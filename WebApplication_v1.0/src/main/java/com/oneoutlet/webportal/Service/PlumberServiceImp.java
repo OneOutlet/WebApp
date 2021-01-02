@@ -8,7 +8,7 @@ import com.oneoutlet.webportal.BO.ServicePlumberBO;
 import com.oneoutlet.webportal.DAO.ServicePlumberDAO;
 import com.oneoutlet.webportal.DTO.ServicePlumberDTO;
 
-@Service("eService")
+@Service
 public class PlumberServiceImp implements PlumberService {
 
 	@Autowired

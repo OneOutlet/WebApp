@@ -58,6 +58,8 @@ public class ServiceController {
 	                   @ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
 	                   @ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
 	                   @ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber) {
+		
+		System.out.println("Success");
            
 		return "test";
 

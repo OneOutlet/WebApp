@@ -8,7 +8,7 @@ import com.oneoutlet.webportal.BO.ServicePainterBO;
 import com.oneoutlet.webportal.DAO.ServicePainterDAO;
 import com.oneoutlet.webportal.DTO.ServicePainterDTO;
 
-@Service("eService")
+@Service
 public class PainterServiceImp implements PainterService {
 
 	@Autowired
