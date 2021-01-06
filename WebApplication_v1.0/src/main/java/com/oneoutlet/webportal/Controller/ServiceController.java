@@ -27,31 +27,29 @@ public class ServiceController {
 
 	@Autowired
 	private ElectricianService electricianService;
-	
+
 	@Autowired
-	private CarpenterService carpenterService ;
-	
+	private CarpenterService carpenterService;
+
 	@Autowired
 	private EventService eventService;
-	
+
 	@Autowired
-	private IronWorkService ironWorkService ;
-	
+	private IronWorkService ironWorkService;
+
 	@Autowired
 	private PainterService painterService;
-	
+
 	@Autowired
 	private PlumberService plumberService;
-	
-	
 
 	@RequestMapping("/")
 	public String home(@ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
-			           @ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
-			           @ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent ,
-			           @ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
-			           @ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
-			           @ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber) {
+			@ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
+			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
+			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
+			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
+			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber) {
 
 		return "home";
 
@@ -59,107 +57,130 @@ public class ServiceController {
 
 	@RequestMapping(value = "/regitercarpenterservice", method = RequestMethod.POST)
 	public String regitercarpenterservice(
+			@ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
+			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
+			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
+			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
+			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
 			@Valid @ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
-			BindingResult result) {
+			BindingResult resultCarpenter) {
 
-		if(result.hasErrors()) {
-		
+		if (resultCarpenter.hasErrors()) {
+
+			System.out.println("errors");
 			return "home";
-		
+
 		}
-		
+
 		carpenterService.insertDataOfCarpenter(serviceCarpenter);
-		
-		return "home";
+
+		return "homeResponce";
 
 	}
-	
-	
+
 	@RequestMapping(value = "/regiterelecrtonicservice", method = RequestMethod.POST)
 	public String regiterelecrtonicservice(
-			@Valid  @ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
-			BindingResult result) {
+			@ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
+			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
+			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
+			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
+			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+			@Valid @ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
+			BindingResult resultElectrician) {
 
-		if(result.hasErrors()) {
-		
+		if (resultElectrician.hasErrors()) {
+
 			return "home";
-		
+
 		}
-		
+
 		electricianService.insertDataOfElectrician(serviceElectrician);
-		
-		return "home";
+
+		return "homeResponce";
 
 	}
-	
-	@RequestMapping(value = "/regitereventservice", method = RequestMethod.POST)
-	public String regitereventservice(
-			@Valid @ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
-			BindingResult result) {
 
-		if(result.hasErrors()) {
-		
+	@RequestMapping(value = "/regitereventservice", method = RequestMethod.POST)
+	public String regitereventservice(@ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
+			@ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
+			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
+			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
+			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+			@Valid @ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
+			BindingResult resultEvent) {
+
+		if (resultEvent.hasErrors()) {
+
 			return "home";
-		
+
 		}
 		eventService.insertDataOfEvent(serviceEvent);
-		
-		
-		return "home";
+
+		return "homeResponce";
 
 	}
-	
+
 	@RequestMapping(value = "/regiterironworkservice", method = RequestMethod.POST)
-	public String regiterironworkservice(
+	public String regiterironworkservice(@ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
+			@ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
+			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
+			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
+			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
 			@Valid @ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
-			BindingResult result) {
+			BindingResult resultIronWork) {
 
-		if(result.hasErrors()) {
-		
+		if (resultIronWork.hasErrors()) {
+
 			return "home";
-		
+
 		}
-		
+
 		ironWorkService.insertDataOfIronWork(serviceIronWork);
-		
-		return "home";
+
+		return "homeResponce";
 
 	}
-	
+
 	@RequestMapping(value = "/regiterpainterservice", method = RequestMethod.POST)
-	public String regiterpainterservice(
-			@Valid  @ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
-			BindingResult result) {
+	public String regiterpainterservice(@ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
+			@ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
+			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
+			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
+			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+			@Valid @ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
+			BindingResult resultPainter) {
 
-		if(result.hasErrors()) {
-		
+		if (resultPainter.hasErrors()) {
+
 			return "home";
-		
+
 		}
-		
+
 		painterService.insertDataOfPainter(servicePainter);
-		
-		return "home";
+
+		return "homeResponce";
 
 	}
-	
+
 	@RequestMapping(value = "/regiterplumberservice", method = RequestMethod.POST)
-	public String regiterplumberservice(
-			@Valid    @ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
-			BindingResult result) {
+	public String regiterplumberservice(@ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
+			@ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
+			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
+			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
+			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
+			@Valid @ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+			BindingResult resultPlumber) {
 
-		if(result.hasErrors()) {
-		
+		if (resultPlumber.hasErrors()) {
+
 			return "home";
-		
+
 		}
-		
+
 		plumberService.insertDataOfPlumber(servicePlumber);
-		
-		return "home";
+
+		return "homeResponce";
 
 	}
-	
-	
 
 }
