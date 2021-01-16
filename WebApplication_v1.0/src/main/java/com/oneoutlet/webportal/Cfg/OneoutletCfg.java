@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -28,9 +28,8 @@ public class OneoutletCfg {
 	public InternalResourceViewResolver viewResolver() {
 	
 		InternalResourceViewResolver viewRes = new InternalResourceViewResolver();
-
+		viewRes.setViewClass(JstlView.class);
 		viewRes.setPrefix("/WEB-INF/view/");
-
 		viewRes.setSuffix(".jsp");
 
 		return viewRes;

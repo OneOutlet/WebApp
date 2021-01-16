@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +44,7 @@ public class ServiceController {
 	@Autowired
 	private PlumberService plumberService;
 
-	@RequestMapping("/")
+	@RequestMapping({"/","home"})
 	public String home(@ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
 			@ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
 			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
@@ -51,7 +52,17 @@ public class ServiceController {
 			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
 			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber) {
 
-		return "home";
+		try {
+			return "home";
+			
+		} catch (IllegalStateException e) {
+
+			System.out.println("ServiceController.home()");
+			
+			e.printStackTrace();
+			
+			return "error";
+		}
 
 	}
 
@@ -63,81 +74,140 @@ public class ServiceController {
 			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
 			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
 			@Valid @ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
-			BindingResult resultCarpenter) {
+			BindingResult resultCarpenter,Model m) {
 
 		if (resultCarpenter.hasErrors()) {
 
-			System.out.println("errors");
+			m.addAttribute("act", "reqCarpenter");
 			return "home";
 
 		}
 
-		carpenterService.insertDataOfCarpenter(serviceCarpenter);
+		try {
+			carpenterService.insertDataOfCarpenter(serviceCarpenter);
 
-		return "homeResponce";
+			return "home";
+			
+		} catch (IllegalStateException e) {
+		
+			System.out.println("ServiceController.home()");
+			
+			e.printStackTrace();
+			
+			return "error";
+		}
 
 	}
 
 	@RequestMapping(value = "/regiterelecrtonicservice", method = RequestMethod.POST)
 	public String regiterelecrtonicservice(
+
 			@ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
+
 			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
+
 			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
+
 			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
+
 			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+
 			@Valid @ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
-			BindingResult resultElectrician) {
+			BindingResult resultElectrician,Model m) {
 
 		if (resultElectrician.hasErrors()) {
 
+			m.addAttribute("act", "reqElectrician");
 			return "home";
 
 		}
 
-		electricianService.insertDataOfElectrician(serviceElectrician);
+		try {
+			electricianService.insertDataOfElectrician(serviceElectrician);
 
-		return "homeResponce";
+			return "home";
+		
+		} catch (IllegalStateException e) {
+		
+			System.out.println("ServiceController.home()");
+			
+			e.printStackTrace();
+			
+			return "error";
+		}
 
 	}
 
 	@RequestMapping(value = "/regitereventservice", method = RequestMethod.POST)
 	public String regitereventservice(@ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
+
 			@ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
+
 			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
+
 			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
+
 			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
-			@Valid @ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
-			BindingResult resultEvent) {
+
+			@Valid @ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent, 
+			BindingResult resultEvent,Model m) {
 
 		if (resultEvent.hasErrors()) {
 
+			m.addAttribute("act", "reqEvent");
 			return "home";
 
 		}
-		eventService.insertDataOfEvent(serviceEvent);
+		try {
+			eventService.insertDataOfEvent(serviceEvent);
 
-		return "homeResponce";
+			return "home";
+			
+		} catch (IllegalStateException e) {
+			
+			System.out.println("ServiceController.home()");
+			
+			e.printStackTrace();
+			
+			return "error";
+		}
 
 	}
 
 	@RequestMapping(value = "/regiterironworkservice", method = RequestMethod.POST)
 	public String regiterironworkservice(@ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
+
 			@ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
+
 			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
+
 			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
+
 			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+
 			@Valid @ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
-			BindingResult resultIronWork) {
+			BindingResult resultIronWork,Model m) {
 
 		if (resultIronWork.hasErrors()) {
-
+			
+            m.addAttribute("act", "reqIronWork");
 			return "home";
-
 		}
 
-		ironWorkService.insertDataOfIronWork(serviceIronWork);
+		try {
+			ironWorkService.insertDataOfIronWork(serviceIronWork);
 
-		return "homeResponce";
+			return "home";
+		
+		} catch (IllegalStateException e) {
+		
+			System.out.println("ServiceController.home()");
+			
+			e.printStackTrace();
+
+			return "error";
+
+		}
 
 	}
 
@@ -148,17 +218,28 @@ public class ServiceController {
 			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
 			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
 			@Valid @ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
-			BindingResult resultPainter) {
+			BindingResult resultPainter,Model m) {
 
 		if (resultPainter.hasErrors()) {
 
+			 m.addAttribute("act", "reqPainter");
 			return "home";
 
 		}
 
-		painterService.insertDataOfPainter(servicePainter);
+		try {
+			painterService.insertDataOfPainter(servicePainter);
 
-		return "homeResponce";
+			return "home";
+		
+		} catch (IllegalStateException e) {
+			
+			System.out.println("ServiceController.home()");
+			
+			e.printStackTrace();
+			
+			return "error";
+		}
 
 	}
 
@@ -168,18 +249,29 @@ public class ServiceController {
 			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
 			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
 			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
-			@Valid @ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
-			BindingResult resultPlumber) {
+			@Valid @ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber, 
+			BindingResult resultPlumber,Model m) {
 
 		if (resultPlumber.hasErrors()) {
 
+			m.addAttribute("act", "reqPlumber");
 			return "home";
 
 		}
 
-		plumberService.insertDataOfPlumber(servicePlumber);
+		try {
+			plumberService.insertDataOfPlumber(servicePlumber);
 
-		return "homeResponce";
+			return "home";
+		
+		} catch (IllegalStateException e) {
+		
+			System.out.println("ServiceController.home()");
+			
+			e.printStackTrace();
+			
+			return "error";
+		}
 
 	}
 

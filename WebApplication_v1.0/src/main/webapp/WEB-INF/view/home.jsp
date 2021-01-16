@@ -1,3 +1,4 @@
+<%@ page isELIgnored="false" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYpE html>
@@ -25,6 +26,11 @@
 <link href="Edit/EditHome/custom-home.css" rel="stylesheet">
 </head>
 <body>
+
+
+    <!-- Service Error Alert -->
+    
+    <jsp:include page="Popup/Alert/home-alert.jsp"></jsp:include>
 
 	<!--Navbar -->
 	<jsp:include page="Header/Navbar.jsp"></jsp:include>
