@@ -59,3 +59,13 @@
 			class="alert-link">Please Click here </a>. To Complete your Request.
 	</div>
 </c:if>
+
+
+<!-- Contact Us Error Alert -->
+<c:if test="${act eq'reqContactUs'}">
+	<div class="alert alert-danger" role="alert">
+		Dear User your request is not Completed <a
+			data-target="#modalContactUsForm" data-toggle="modal"
+			class="alert-link">Please Click here </a>. To Complete your Request.
+	</div>
+</c:if>

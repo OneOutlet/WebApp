@@ -30,7 +30,12 @@
 
     <!-- Service Error Alert -->
     
-    <jsp:include page="Popup/Alert/home-alert.jsp"></jsp:include>
+    <jsp:include page="Popup/Alert/home-error-alert.jsp"></jsp:include>
+
+    <!-- Service Success Alert -->
+    
+    <jsp:include page="Popup/Alert/home-success-alert.jsp"></jsp:include>
+
 
 	<!--Navbar -->
 	<jsp:include page="Header/Navbar.jsp"></jsp:include>
@@ -60,6 +65,9 @@
 
 
 	<jsp:include page="Popup/Service-Body-Popup/Plumber.jsp"></jsp:include>
+	
+	
+	<jsp:include page="Popup/Service-Body-Popup/Contact-us.jsp"></jsp:include>
 
 	<!-- JQuery -->
 	<script type="text/javascript"

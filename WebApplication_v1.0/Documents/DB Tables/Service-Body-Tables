@@ -57,3 +57,14 @@ Query =  Create table Service_Event(Customer_Name varchar(100) not null,mobile v
 
 
 ===========================================================================================================================================================================================================
+
+
+
+                                      Contact_US
+          Customer_Name     |    Mobile      |        Email         |        Issue           |    Time
+            
+Query =  Create table Contact_US(Customer_Name varchar(100) not null,mobile varchar(11) not null,email varchar(100) not null,Issue varchar(10000) not null,Time DATETIME not null);      
+
+
+
+===========================================================================================================================================================================================================

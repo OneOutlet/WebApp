@@ -1,7 +1,6 @@
 package com.oneoutlet.webportal.Controller;
 
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.oneoutlet.webportal.DTO.ContactUsDTO;
 import com.oneoutlet.webportal.DTO.ServiceCarpenterDTO;
 import com.oneoutlet.webportal.DTO.ServiceElectricianDTO;
 import com.oneoutlet.webportal.DTO.ServiceEventDTO;
@@ -17,6 +17,7 @@ import com.oneoutlet.webportal.DTO.ServiceIronWorkDTO;
 import com.oneoutlet.webportal.DTO.ServicePainterDTO;
 import com.oneoutlet.webportal.DTO.ServicePlumberDTO;
 import com.oneoutlet.webportal.Service.CarpenterService;
+import com.oneoutlet.webportal.Service.ContactUsService;
 import com.oneoutlet.webportal.Service.ElectricianService;
 import com.oneoutlet.webportal.Service.EventService;
 import com.oneoutlet.webportal.Service.IronWorkService;
@@ -43,6 +44,9 @@ public class ServiceController {
 
 	@Autowired
 	private PlumberService plumberService;
+	
+	@Autowired
+	private ContactUsService contactUsService;
 
 	@RequestMapping({"/","home"})
 	public String home(@ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
@@ -50,7 +54,8 @@ public class ServiceController {
 			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
 			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
 			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
-			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber) {
+			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+			@ModelAttribute("contactUs") ContactUsDTO contactUs) {
 
 		try {
 			return "home";
@@ -73,6 +78,7 @@ public class ServiceController {
 			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
 			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
 			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+			@ModelAttribute("contactUs") ContactUsDTO contactUs,
 			@Valid @ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
 			BindingResult resultCarpenter,Model m) {
 
@@ -86,7 +92,7 @@ public class ServiceController {
 		try {
 			carpenterService.insertDataOfCarpenter(serviceCarpenter);
 
-			return "home";
+			return "redirect:home?actsuccess=reqCarpenter";
 			
 		} catch (IllegalStateException e) {
 		
@@ -111,6 +117,8 @@ public class ServiceController {
 			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
 
 			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+			
+			@ModelAttribute("contactUs") ContactUsDTO contactUs,
 
 			@Valid @ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
 			BindingResult resultElectrician,Model m) {
@@ -125,7 +133,7 @@ public class ServiceController {
 		try {
 			electricianService.insertDataOfElectrician(serviceElectrician);
 
-			return "home";
+			return "redirect:home?actsuccess=reqElectrician";
 		
 		} catch (IllegalStateException e) {
 		
@@ -146,8 +154,10 @@ public class ServiceController {
 			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
 
 			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
-
+			
 			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+			
+			@ModelAttribute("contactUs") ContactUsDTO contactUs,
 
 			@Valid @ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent, 
 			BindingResult resultEvent,Model m) {
@@ -161,7 +171,7 @@ public class ServiceController {
 		try {
 			eventService.insertDataOfEvent(serviceEvent);
 
-			return "home";
+			return "redirect:home?actsuccess=reqEvent";
 			
 		} catch (IllegalStateException e) {
 			
@@ -184,6 +194,8 @@ public class ServiceController {
 			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
 
 			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+			
+			@ModelAttribute("contactUs") ContactUsDTO contactUs,
 
 			@Valid @ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
 			BindingResult resultIronWork,Model m) {
@@ -197,7 +209,7 @@ public class ServiceController {
 		try {
 			ironWorkService.insertDataOfIronWork(serviceIronWork);
 
-			return "home";
+			return "redirect:home?actsuccess=reqIronWork";
 		
 		} catch (IllegalStateException e) {
 		
@@ -217,6 +229,7 @@ public class ServiceController {
 			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
 			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
 			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+			@ModelAttribute("contactUs") ContactUsDTO contactUs,
 			@Valid @ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
 			BindingResult resultPainter,Model m) {
 
@@ -230,7 +243,7 @@ public class ServiceController {
 		try {
 			painterService.insertDataOfPainter(servicePainter);
 
-			return "home";
+			return "redirect:home?actsuccess=reqPainter";
 		
 		} catch (IllegalStateException e) {
 			
@@ -249,6 +262,7 @@ public class ServiceController {
 			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
 			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
 			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
+			@ModelAttribute("contactUs") ContactUsDTO contactUs,
 			@Valid @ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber, 
 			BindingResult resultPlumber,Model m) {
 
@@ -262,7 +276,41 @@ public class ServiceController {
 		try {
 			plumberService.insertDataOfPlumber(servicePlumber);
 
+			return "redirect:home?actsuccess=reqPlumber";
+		
+		} catch (IllegalStateException e) {
+		
+			System.out.println("ServiceController.home()");
+			
+			e.printStackTrace();
+			
+			return "error";
+		}
+
+	}
+	
+	@RequestMapping(value = "/contactus", method = RequestMethod.POST)
+	public String contactus(@ModelAttribute("serviceElectrician") ServiceElectricianDTO serviceElectrician,
+			@ModelAttribute("serviceCarpenter") ServiceCarpenterDTO serviceCarpenter,
+			@ModelAttribute("serviceEvent") ServiceEventDTO serviceEvent,
+			@ModelAttribute("serviceIronWork") ServiceIronWorkDTO serviceIronWork,
+			@ModelAttribute("servicePainter") ServicePainterDTO servicePainter,
+			@ModelAttribute("servicePlumber") ServicePlumberDTO servicePlumber,
+			@Valid @ModelAttribute("contactUs") ContactUsDTO contactUs, 
+			BindingResult resultContactUs,Model m) {
+
+		if (resultContactUs.hasErrors()) {
+
+			m.addAttribute("act", "reqContactUs");
 			return "home";
+
+		}
+
+		try {
+			
+			contactUsService.insertDataOfContactUs(contactUs);
+			
+			return "redirect:home?actsuccess=reqContactUs";
 		
 		} catch (IllegalStateException e) {
 		

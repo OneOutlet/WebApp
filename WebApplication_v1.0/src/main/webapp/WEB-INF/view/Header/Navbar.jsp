@@ -2,8 +2,8 @@
 <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark"
 	style="background-color: #212121;">
-	<a class="navbar-brand" href="#"> 
-	<img src="https://cdn.logo.com/hotlink-ok/logo-social.png"
+	<a class="navbar-brand" href="#"> <img
+		src="https://cdn.logo.com/hotlink-ok/logo-social.png"
 		class="img-fluid animated bounce infinite" style="width: 50px"
 		alt="logo">
 	</a>
@@ -17,12 +17,19 @@
 		<ul class="navbar-nav mr-auto">
 			<!-- Menu -->
 		</ul>
-		<ul class="navbar-nav ml-auto nav-flex-icons">
 
-			<li class="nav-item">
-				<a class="nav-link" href="#">About Us</a>
-			</li>
-			</ul>
+		
+
+		<ul class="navbar-nav ml-auto nav-flex-icons">
+			
+			<li class="nav-item"><a class="nav-link"
+				data-target="#modalContactUsForm" data-toggle="modal">Contact
+					Us</a></li>
+					
+				
+			<li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+
+		</ul>
 	</div>
 </nav>
 <!--/.Navbar -->

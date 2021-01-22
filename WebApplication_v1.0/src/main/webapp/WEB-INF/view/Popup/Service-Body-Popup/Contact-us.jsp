@@ -2,19 +2,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!----SignUp Model---->
-<div class="modal fade" id="modalCarpenterForm" tabindex="-1"
+<div class="modal fade" id="modalContactUsForm" tabindex="-1"
 	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header text-center">
-				<h4 class="modal-title w-100 font-weight-bold">BOOK CARPENTER</h4>
+				<h4 class="modal-title w-100 font-weight-bold">CONTACT US</h4>
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form:form action="regitercarpenterservice"
-				modelAttribute="serviceCarpenter" class="needs-validation">
+			<form:form action="contactus"
+				modelAttribute="contactUs" class="needs-validation">
 				<div class="modal-body mx-3">
 					<div class="md-form mb-5">
 						<i class="fas fa-user prefix grey-text"></i>
@@ -48,17 +48,17 @@
 
 					<div class="md-form mb-5">
 						<i class="fas fa-user prefix grey-text"></i>
-						<form:input type="text" path="Address" id="orangeForm-name"
+						<form:input type="text" path="issue" id="orangeForm-name"
 							class="form-control is-invalid  validate" required="required" />
 						<label data-error="wrong" data-success="right"
-							for="orangeForm-name">Your Address</label>
+							for="orangeForm-name">Your Issue</label>
 							
-						<form:errors class="invalid-feedback" path="Address" />
+						<form:errors class="invalid-feedback" path="issue" />
 					</div>
 
 				</div>
 				<div class="modal-footer d-flex justify-content-center">
-					<button type="submit" class="btn btn-deep-orange">BOOK NOW</button>
+					<button type="submit" class="btn btn-deep-orange">Submit</button>
 				</div>
 			</form:form>
 		</div>
